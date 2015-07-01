@@ -7,13 +7,20 @@
 $(document).ready(function () {
     $("#room_tab").find("a").click(function (e) {
         e.preventDefault();
+        window.location.hash = e.currentTarget.hash;
         $(this).tab('show')
     });
+
+    $(window).bind('hashchange', function () {
+        openTab(window.location.hash);
+    });
+
+    openTab(window.location.hash);
 
     cellRatioPrint();
     onPrisonChange();
 
-    $(document).on('change', 'input', function(){
+    $(document).on('change', 'input', function () {
         onPrisonChange()
     });
     $('select').on('change', function (e) {
@@ -22,6 +29,12 @@ $(document).ready(function () {
 
     $("#cell_grading_ratio_error").hide(0);
 });
+
+function openTab(hash) {
+    if (hash != "") {
+        $('#room_tab').find('a[href="' + hash + '"]').tab('show');
+    }
+}
 
 function onPrisonChange() {
     CalculatePAObjectsAmount();
@@ -272,7 +285,6 @@ function cellRatioPrint() {
         total_cells += value.cells;
         avg_level += value.cells * key;
     });
-
 
 
     // Show error if ratios don't fit

@@ -185,7 +185,7 @@ function printLaundry() {
     $("#laundry_squares_required").html("<b>Total squares required: </b>" + Math.round(squaresRequired));
 
     // Suggested room number
-    $("#laundry_suggested_room_number").html("<b>Suggested number of rooms: </b>" + $("#no_prisoners").val() / 100);
+    $("#laundry_suggested_room_number").html("<b>Suggested number of rooms: </b>" + ($("#no_prisoners").val() / 100).toFixed(2));
 
     // cleaning area
     objectsTable = $("#table_cleaning_area").find("tbody");
@@ -199,7 +199,7 @@ function printLaundry() {
     });
 
     // Rooms to build
-    $("#cleaning_rooms_to_build").html("<b>Suggested number of rooms: </b>" + squaresRequired / 28);
+    $("#cleaning_rooms_to_build").html("<b>Suggested number of rooms: </b>" + (squaresRequired / 28).toFixed(2));
 }
 
 function getRow(key, value) {

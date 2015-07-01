@@ -16,6 +16,9 @@ $(document).ready(function () {
     $(document).on('change', 'input', function(){
         onPrisonChange()
     });
+    $('select').on('change', function (e) {
+        onPrisonChange()
+    });
 
     $("#cell_grading_ratio_error").hide(0);
 });

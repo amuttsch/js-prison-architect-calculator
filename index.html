@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Prison Architect Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/pac.css"/>
+
+
+    <script lang="javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script lang="javascript" src="js/pac.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+<a href="https://github.com/amuttsch/js-prison-architect-calculator"><img
+        style="position: fixed; top: 0; right: 0; border: 0; z-index: 9999"
+        src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67"
+        alt="Fork me on GitHub"
+        data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Prison Architect Calculator</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Your Prison</div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="no_prisoners" class="col-sm-4 control-label">Number of prisoners:</label>
+
+                            <div class="col-sm-6 col-sm-offset-2">
+                                <input type="number" class="form-control" id="no_prisoners" value="100">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="meal_variety" class="col-sm-4 control-label">Meal variety:</label>
+
+                            <div class="col-sm-6 col-sm-offset-2">
+                                <select class="form-control" id="meal_variety">
+                                    <option>Low</option>
+                                    <option selected="selected">Medium</option>
+                                    <option>High</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="meal_quantity" class="col-sm-4 control-label">Meal quantity:</label>
+
+                            <div class="col-sm-6 col-sm-offset-2">
+                                <select class="form-control" id="meal_quantity">
+                                    <option>Low</option>
+                                    <option selected="selected">Medium</option>
+                                    <option>High</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- row -->
+    <ul class="nav nav-tabs nav-justified top-15" role="tablist" id="room_tab">
+        <li role="presentation" class="active"><a href="#kitchen" aria-controls="kitchen" role="tab" data-toggle="tab">Kitchen</a>
+        </li>
+        <li role="presentation"><a href="#laundry" aria-controls="laundry" role="tab" data-toggle="tab">Laundry /
+            Cleaning</a></li>
+        <li role="presentation"><a href="#grading" aria-controls="grading" role="tab" data-toggle="tab">Cell grading</a>
+        </li>
+    </ul>
+
+    <div class="tab-content top-30">
+        <div role="tabpanel" class="tab-pane fade in active" id="kitchen">
+            <div class="row">
+                <!-- Objects -->
+                <div class="col-md-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Objects</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover" id="table_kitchen_objects">
+                                <thead>
+                                <tr>
+                                    <th>Object</th>
+                                    <th>Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end Objects -->
+                <!-- kitchen planning -->
+                <div class="col-md-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Kitchen area planning</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover" id="table_kitchen_area">
+                                <thead>
+                                <tr>
+                                    <th>Object</th>
+                                    <th>Sqares needed</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end kitchen planning -->
+                <!-- canteen planning -->
+                <div class="col-md-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Canteen area planning</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover" id="table_canteen_area">
+                                <thead>
+                                <tr>
+                                    <th>Object</th>
+                                    <th>Squares needed</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end canteen planning -->
+            </div>
+        </div>
+        <!-- tab laundry / cleaning -->
+        <div role="tabpanel" class="tab-pane fade" id="laundry">
+            <!-- laundry room -->
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Laundy room</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover" id="table_laundry_room">
+                            <thead>
+                            <tr>
+                                <th>Object</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Cleaning cupboard</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover" id="table_cleaning_cupboard">
+                            <thead>
+                            <tr>
+                                <th>Object</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end laundry room -->
+            <!-- laundry planning -->
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Laundy room</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover" id="table_laundry_area">
+                            <thead>
+                            <tr>
+                                <th>Object</th>
+                                <th>Squares needed</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <hr>
+                        <div id="laundry_squares_required">Total space required</div>
+                        <div id="laundry_suggested_room_number">Suggested room number</div>
+                    </div>
+                </div>
+            </div>
+            <!-- end laundry planning -->
+            <!-- cleaning planning -->
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Cleaning Cupboard</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover" id="table_cleaning_area">
+                            <thead>
+                            <tr>
+                                <th>Object</th>
+                                <th>Squares needed</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <hr>
+                        <div id="cleaning_rooms_to_build">Rooms to build</div>
+                    </div>
+                </div>
+            </div>
+            <!-- end cleaning planning -->
+        </div>
+        <!-- tab cell grading -->
+        <div role="tabpanel" class="tab-pane fade" id="grading">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Cell grading</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="alert alert-danger" role="alert" id="cell_grading_ratio_error">
+                            <b>Error:</b> Fix ratios to continue calculation!
+                        </div>
+                        <form>
+                            <table class="table table-hover" id="table_cell_grading">
+                                <colgroup>
+                                    <col class="col-md-1">
+                                    <col class="col-md-1">
+                                    <col class="col-md-2">
+                                    <col class="col-md-1 text-right">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>Cell level</th>
+                                    <th>Size</th>
+                                    <th>Ratio</th>
+                                    <th>Cells needed</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </form>
+                        <hr>
+                        <div id="cell_grading_no_cells"></div>
+                        <div id="cell_grading_avg_level"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- tab grading -->
+    </div>
+</div>
+</body>
+</html>
